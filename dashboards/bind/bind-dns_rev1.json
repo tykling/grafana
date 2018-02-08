@@ -1585,7 +1585,7 @@
         "multi": false,
         "name": "alias",
         "options": [],
-        "query": "label_values(bind_up, alias)",
+        "query": "label_values(bind_up, instance)",
         "refresh": 1,
         "regex": "",
         "sort": 1,
