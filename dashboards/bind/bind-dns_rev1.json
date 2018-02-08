@@ -107,7 +107,7 @@
           },
           "targets": [
             {
-              "expr": "max(node_time) - max(bind_boot_time_seconds)",
+              "expr": "max(node_time{instance=\"$instance\"}) - max(bind_boot_time_seconds{instance=\"$instance\"})",
               "interval": "5m",
               "intervalFactor": 2,
               "refId": "A",
@@ -185,7 +185,7 @@
           },
           "targets": [
             {
-              "expr": "max(node_time) - max(bind_config_time_seconds)",
+              "expr": "max(node_time{instance=\"$instance\"}) - max(bind_config_time_seconds{instance=\"$instance\"})",
               "interval": "5m",
               "intervalFactor": 2,
               "refId": "A",
@@ -235,7 +235,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "increase(bind_process_cpu_seconds_total[120s])",
+              "expr": "increase(bind_process_cpu_seconds_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "",
               "refId": "A",
@@ -309,7 +309,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(node_cpu[120s])) by (mode) * 100 / count_scalar(node_cpu{mode=\"user\"}) or sum(irate(node_cpu[120s])) by (mode) * 100 / count_scalar(node_cpu{mode=\"user\"})",
+              "expr": "sum(rate(node_cpu{instance=\"$instance\"}[120s])) by (mode) * 100 / count_scalar(node_cpu{mode=\"user\", instance=\"$instance\"}) or sum(irate(node_cpu{instance=\"$instance\"}[120s])) by (mode) * 100 / count_scalar(node_cpu{mode=\"user\", instance=\"$instance\"})",
               "intervalFactor": 2,
               "legendFormat": "{{ mode }}",
               "refId": "A",
@@ -387,7 +387,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "node_load1",
+              "expr": "node_load1{instance=\"$instance\"}",
               "intervalFactor": 2,
               "legendFormat": "Load 1m",
               "refId": "A",
@@ -395,7 +395,7 @@
               "target": ""
             },
             {
-              "expr": "node_load5",
+              "expr": "node_load5{instance=\"$instance\"}",
               "intervalFactor": 2,
               "legendFormat": "Load 5m",
               "refId": "B",
@@ -403,7 +403,7 @@
               "target": ""
             },
             {
-              "expr": "node_load15",
+              "expr": "node_load15{instance=\"$instance\"}",
               "intervalFactor": 2,
               "legendFormat": "Load 15m",
               "refId": "C",
@@ -774,7 +774,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "increase(bind_incoming_queries_total[120s])",
+              "expr": "increase(bind_incoming_queries_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ type }}",
               "refId": "A",
@@ -848,7 +848,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "increase(bind_incoming_requests_total[120s])",
+              "expr": "increase(bind_incoming_requests_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ opcode }}",
               "refId": "A",
@@ -922,7 +922,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "increase(bind_responses_total[120s])",
+              "expr": "increase(bind_responses_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ result }}",
               "refId": "A",
@@ -1006,7 +1006,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "increase(bind_query_duplicates_total[120s])",
+              "expr": "increase(bind_query_duplicates_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "Duplicates",
               "refId": "A",
@@ -1014,7 +1014,7 @@
               "target": ""
             },
             {
-              "expr": "increase(bind_query_errors_total[120s])",
+              "expr": "increase(bind_query_errors_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ error }}",
               "refId": "B",
@@ -1022,7 +1022,7 @@
               "target": ""
             },
             {
-              "expr": "increase(bind_query_recursions_total[120s])",
+              "expr": "increase(bind_query_recursions_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "Recursions",
               "refId": "C",
@@ -1106,7 +1106,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "bind_resolver_cache_rrsets",
+              "expr": "bind_resolver_cache_rrsets{instance=\"$instance\"}",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / {{ type }}",
               "refId": "A",
@@ -1178,7 +1178,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "increase(bind_resolver_dnssec_validation_errors_total[120s])",
+              "expr": "increase(bind_resolver_dnssec_validation_errors_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / ValErr",
               "refId": "A",
@@ -1186,7 +1186,7 @@
               "target": ""
             },
             {
-              "expr": "increase(bind_resolver_dnssec_validation_success_total[120s])",
+              "expr": "increase(bind_resolver_dnssec_validation_success_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / {{ result }}",
               "refId": "B",
@@ -1258,7 +1258,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "increase(bind_resolver_queries_total[120s])",
+              "expr": "increase(bind_resolver_queries_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / {{ type }}",
               "refId": "A",
@@ -1330,7 +1330,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "increase(bind_resolver_query_errors_total[120s])",
+              "expr": "increase(bind_resolver_query_errors_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / {{ error }}",
               "refId": "A",
@@ -1338,7 +1338,7 @@
               "target": ""
             },
             {
-              "expr": "increase(bind_resolver_query_edns0_errors_total[120s])",
+              "expr": "increase(bind_resolver_query_edns0_errors_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / EDNS0",
               "refId": "B",
@@ -1346,7 +1346,7 @@
               "target": ""
             },
             {
-              "expr": "increase(bind_resolver_query_retries_total[120s])",
+              "expr": "increase(bind_resolver_query_retries_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / Retry",
               "refId": "C",
@@ -1418,7 +1418,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "increase(bind_resolver_query_duration_seconds_bucket[120s])",
+              "expr": "increase(bind_resolver_query_duration_seconds_bucket{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / {{ le }}",
               "refId": "A",
@@ -1490,7 +1490,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "increase(bind_resolver_response_errors_total[120s])",
+              "expr": "increase(bind_resolver_response_errors_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / {{ error }}",
               "refId": "A",
@@ -1498,7 +1498,7 @@
               "target": ""
             },
             {
-              "expr": "increase(bind_resolver_response_lame_total[120s])",
+              "expr": "increase(bind_resolver_response_lame_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / LAME",
               "refId": "B",
@@ -1506,7 +1506,7 @@
               "target": ""
             },
             {
-              "expr": "increase(bind_resolver_response_mismatch_total[120s])",
+              "expr": "increase(bind_resolver_response_mismatch_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / MISMATCH",
               "refId": "C",
@@ -1514,7 +1514,7 @@
               "target": ""
             },
             {
-              "expr": "increase(bind_resolver_response_truncated_total[120s])",
+              "expr": "increase(bind_resolver_response_truncated_total{instance=\"$instance\"}[120s])",
               "intervalFactor": 2,
               "legendFormat": "{{ view }} / TRUNCATED",
               "refId": "D",
